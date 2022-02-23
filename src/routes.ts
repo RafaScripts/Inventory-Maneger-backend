@@ -8,10 +8,12 @@ import ItensController from "./controllers/ItensController";
 const Routes = express();
 
 Routes.get('/vendors', VendorController.index)
-    .post('/vendors', VendorController.create);
+    .post('/vendors', VendorController.create)
+    .delete('/vendors/:id', VendorController.delete);
 
 Routes.get('/itens', ItensController.index)
-    .post('/itens', ItensController.create);
+    .post('/itens', ItensController.create)
+    .delete('/itens/:id', ItensController.delete);
 
 export default Routes;
 

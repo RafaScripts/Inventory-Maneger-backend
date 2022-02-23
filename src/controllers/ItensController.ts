@@ -40,6 +40,17 @@ class ItensController{
         return res.status(201).json({ id, name, total, vendor_id });
     }
 
+    async delete(req: any, res: any){
+        const { id } = req.params
+
+        const response = await knex('itens').del().where({
+            id: id,
+        });
+
+        res.status(200).json(response);
+
+    }
+
 }
 
 export default new ItensController;

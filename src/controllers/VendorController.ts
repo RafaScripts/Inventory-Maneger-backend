@@ -31,6 +31,18 @@ class VendorController{
 
         return res.status(201).json({ id, VendorName });
     }
+
+    async delete(req: any, res: any){
+        const { id } = req.params
+
+        const response = await knex('vendors').del().where({
+            id: id,
+        });
+
+        res.status(200).json(response);
+
+    }
+
 }
 
 export default new VendorController;

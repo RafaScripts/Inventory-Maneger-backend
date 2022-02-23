@@ -10,8 +10,7 @@ export async function up(knex: Knex): Promise<void> {
 
         table.integer('vendor_id')
             .references('vendors.id')
-            .notNullable()
-            .onDelete('CASCADE')
+            .onDelete('SET NULL')
 
         table.timestamp('created_at').defaultTo(knex.fn.now())
         table.timestamp('update_at').defaultTo(knex.fn.now())
