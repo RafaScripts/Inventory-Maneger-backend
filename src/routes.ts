@@ -4,8 +4,11 @@ import express from "express";
 
 import VendorController from "./controllers/VendorController";
 import ItensController from "./controllers/ItensController";
+import importXMLcontroller from "./controllers/ImportXMLcontroller";
 
 const Routes = express();
+
+Routes.get('/cfop', importXMLcontroller.index);
 
 Routes.get('/vendors', VendorController.index)
     .post('/vendors', VendorController.create)

@@ -6,7 +6,15 @@ export async function up(knex: Knex): Promise<void> {
         table.increments('id')
 
         table.text('name').notNullable()
+        table.text('descricao').notNullable()
         table.text('total').notNullable()
+        table.text('NCM').notNullable()
+        table.text('cEAN').notNullable()
+        table.text('CEST').notNullable()
+
+        table.integer('value_cust')
+        table.integer('Value').notNullable()
+
 
         table.integer('vendor_id')
             .references('vendors.id')
