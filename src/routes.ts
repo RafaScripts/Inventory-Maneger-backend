@@ -16,6 +16,7 @@ Routes.get('/vendors', VendorController.index)
 
 Routes.get('/itens', ItensController.index)
     .post('/itens', ItensController.create)
+    .put('/itens/:id', ItensController.update)
     .delete('/itens/:id', ItensController.delete);
 
 export default Routes;

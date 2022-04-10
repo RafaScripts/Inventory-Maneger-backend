@@ -4,16 +4,18 @@ import { Knex } from "knex";
 export async function up(knex: Knex): Promise<void> {
     return knex.schema.createTable('itens', function(table){
         table.increments('id')
+        table.text('reference')
 
         table.text('name').notNullable()
-        table.text('descricao').notNullable()
-        table.text('total').notNullable()
-        table.text('NCM').notNullable()
-        table.text('cEAN').notNullable()
-        table.text('CEST').notNullable()
+        table.text('descricao')
+        table.text('quantidade')
+        table.text('NCM')
+        table.text('cEAN')
+        table.text('CEST')
+        table.float('IPI')
 
-        table.integer('value_cust')
-        table.integer('Value').notNullable()
+        table.float('value_cust')
+        table.float('Value').notNullable()
 
 
         table.integer('vendor_id')
