@@ -3,7 +3,7 @@ import { Knex } from "knex";
 
 export async function up(knex: Knex): Promise<void> {
     return knex.schema.createTable('orc', function(table){
-        table.integer('id')
+        table.increments('id')
 
         table.json('produtos')
         table.float('valor_total')

@@ -32,6 +32,18 @@ class VendorController{
         return res.status(201).json({ id, VendorName });
     }
 
+    async update(req: any, res: any){
+        const {id, VendorName} = req.body;
+
+        if(!id){
+            return res.json('Id not parse.')
+        }
+
+        await knex('vendors').update({ VendorName }).where({id: id});
+
+        return res.json('Ok Vendor Updated');
+    }
+
     async delete(req: any, res: any){
         const { id } = req.params
 

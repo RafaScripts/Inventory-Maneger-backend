@@ -6,6 +6,14 @@ class importXMLcontroller {
 
         return res.json(response);
     }
+
+    async create(req: any, res: any){
+
+        const {xml} = req.rawBody;
+
+        return res.json(xml);
+
+    }
 }
 
 export default new importXMLcontroller;
