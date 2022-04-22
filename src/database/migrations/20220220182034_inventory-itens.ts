@@ -9,10 +9,10 @@ export async function up(knex: Knex): Promise<void> {
         table.text('name').notNullable()
         table.text('descricao')
         table.text('quantidade')
-        table.text('NCM')
-        table.text('cEAN')
-        table.text('CEST')
-        table.float('IPI')
+        table.text('NCM').defaultTo('00000000')
+        table.text('cEAN').defaultTo(null)
+        table.text('CEST').defaultTo('0000000')
+        table.float('IPI').defaultTo(null)
 
         table.float('value_cust')
         table.float('Value').notNullable()
@@ -21,6 +21,7 @@ export async function up(knex: Knex): Promise<void> {
         table.integer('vendor_id')
             .references('vendors.id')
             .onDelete('SET NULL')
+            .defaultTo(null)
 
         table.timestamp('created_at').defaultTo(knex.fn.now())
         table.timestamp('update_at').defaultTo(knex.fn.now())

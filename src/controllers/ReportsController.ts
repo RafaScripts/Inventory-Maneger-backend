@@ -1,7 +1,7 @@
 import Knex from '../database/index';
 
 class ReportsController {
-    async index(req: any, res: any){
+    async index (req: any, res: any){
         const response = Knex('orc').where({ status: 2 });
 
         const total = response.map();

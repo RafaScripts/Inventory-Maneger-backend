@@ -1,5 +1,7 @@
 import express from "express";
-import xmlparser from "express-xml-bodyparser";
+//import xmlparser from "express-xml-bodyparser";
+import multer from 'multer';
+const multerConfig = multer();
 
 //importação dos Controllers
 
@@ -46,8 +48,17 @@ Routes.get('/xml', ImportXMLcontroller.index)
     .post('/xml', ImportXMLcontroller.create);
 
 // CSV
-Routes.post('/csv', ImportCsvController.create);
+Routes.post('/csv', multerConfig.single('file'), ImportCsvController.create);
+/*
+Routes.post('/csv',
+    multerConfig.single('file'),
+    async (req: any, res: any) => {
 
+    console.log(req.file.buffer.toString('utf-8'));
+
+    return res.status(200)
+    });
+*/
 // NF-e e NFC-e
 
 export default Routes;
