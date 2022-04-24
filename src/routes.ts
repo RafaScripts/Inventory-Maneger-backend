@@ -17,7 +17,10 @@ import ImportCsvController from "./controllers/ImportCsvController";
 const Routes = express();
 
 // Usuarios
-Routes.get('/users', UserController.index);
+Routes.get('/users', UserController.index)
+    .post('/users', UserController.create)
+    .put('/users', UserController.update)
+    .delete('/users', UserController.delete);
 
 // CFOP
 Routes.get('/cfop', importXMLcontroller.index);
@@ -49,16 +52,7 @@ Routes.get('/xml', ImportXMLcontroller.index)
 
 // CSV
 Routes.post('/csv', multerConfig.single('file'), ImportCsvController.create);
-/*
-Routes.post('/csv',
-    multerConfig.single('file'),
-    async (req: any, res: any) => {
 
-    console.log(req.file.buffer.toString('utf-8'));
-
-    return res.status(200)
-    });
-*/
 // NF-e e NFC-e
 
 export default Routes;

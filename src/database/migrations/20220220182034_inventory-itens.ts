@@ -8,7 +8,7 @@ export async function up(knex: Knex): Promise<void> {
 
         table.text('name').notNullable()
         table.text('descricao')
-        table.text('quantidade')
+        table.integer('quantidade')
         table.text('NCM').defaultTo('00000000')
         table.text('cEAN').defaultTo(null)
         table.text('CEST').defaultTo('0000000')
