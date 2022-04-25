@@ -13,8 +13,16 @@ import OrcController from "./controllers/OrcController";
 import ReportsController from "./controllers/ReportsController";
 import ImportXMLcontroller from "./controllers/ImportXMLcontroller";
 import ImportCsvController from "./controllers/ImportCsvController";
+import SessionController from "./controllers/SessionController";
+import AuthMiddleware from "./midlewares/auth";
 
 const Routes = express();
+
+// Login
+Routes.post('/login', SessionController.store);
+
+//midleware de autenticação
+Routes.use(AuthMiddleware);
 
 // Usuarios
 Routes.get('/users', UserController.index)
