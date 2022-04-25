@@ -14,15 +14,26 @@ import ReportsController from "./controllers/ReportsController";
 import ImportXMLcontroller from "./controllers/ImportXMLcontroller";
 import ImportCsvController from "./controllers/ImportCsvController";
 import SessionController from "./controllers/SessionController";
+import ActivateController from "./controllers/ActivateController";
 import AuthMiddleware from "./midlewares/auth";
+import TokenMiddleware from "./midlewares/token";
 
 const Routes = express();
+
+// Actvate
+Routes.post('/active', ActivateController.store)
+    .get('/tes', ActivateController.test);
 
 // Login
 Routes.post('/login', SessionController.store);
 
+//middleware de Tokens
+Routes.use(TokenMiddleware);
+
 //midleware de autenticação
 Routes.use(AuthMiddleware);
+
+
 
 // Usuarios
 Routes.get('/users', UserController.index)
