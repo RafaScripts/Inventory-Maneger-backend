@@ -1,5 +1,5 @@
 {
-  "name": "inventory-maneger-backend",
+  "name": "SysPOS-backend",
   "version": "1.1.0",
   "main": "server.ts",
   "repository": "https://github.com/RafaScripts/SysPOS-backend.git",
