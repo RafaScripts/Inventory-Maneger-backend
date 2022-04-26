@@ -1,8 +1,8 @@
 {
   "name": "inventory-maneger-backend",
-  "version": "1.0",
-  "main": "index.js",
-  "repository": "https://github.com/RafaScripts/Inventory-Maneger-backend.git",
+  "version": "1.1.0",
+  "main": "server.ts",
+  "repository": "https://github.com/RafaScripts/SysPOS-backend.git",
   "author": "Rafael S. Freire",
   "license": "MIT",
   "dependencies": {

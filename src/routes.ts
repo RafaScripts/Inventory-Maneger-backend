@@ -31,7 +31,8 @@ Routes.post('/login', SessionController.store);
 Routes.use(TokenMiddleware);
 
 //midleware de autenticação
-Routes.use(AuthMiddleware);
+// ativar na proxima atualização
+//Routes.use(AuthMiddleware);
 
 
 
