@@ -15,6 +15,7 @@ import ImportXMLcontroller from "./controllers/ImportXMLcontroller";
 import ImportCsvController from "./controllers/ImportCsvController";
 import SessionController from "./controllers/SessionController";
 import ActivateController from "./controllers/ActivateController";
+import StatusController from "./controllers/StatusController";
 import AuthMiddleware from "./midlewares/auth";
 import TokenMiddleware from "./midlewares/token";
 
@@ -28,7 +29,7 @@ Routes.post('/active', ActivateController.store)
 Routes.post('/login', SessionController.store);
 
 //middleware de Tokens
-Routes.use(TokenMiddleware);
+//Routes.use(TokenMiddleware);
 
 //midleware de autenticação
 // ativar na proxima atualização
@@ -62,6 +63,10 @@ Routes.get('/orcamentos', OrcController.index)
     .post('/orcamentos', OrcController.create)
     .put('/orcamentos/:id', OrcController.update)
     .delete('/orcamentos/:id', OrcController.delete);
+
+// Status ORC
+Routes.get('/status', StatusController.store)
+    .post('/status', StatusController.create);
 
 // Relatorios
 Routes.get('/reports', ReportsController.index);
