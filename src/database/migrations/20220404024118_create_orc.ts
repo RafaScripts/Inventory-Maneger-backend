@@ -6,7 +6,7 @@ export async function up(knex: Knex): Promise<void> {
         table.increments('id')
 
         table.integer('user_id').references('Users.id').defaultTo(null)
-        table.json('produtos')
+        table.integer('products_id').references('orcProducts.id').defaultTo(null)
         table.float('valor_total')
 
         table.integer('statuss').references('Status.id').defaultTo(1)

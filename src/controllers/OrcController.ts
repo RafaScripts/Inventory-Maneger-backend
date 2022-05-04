@@ -21,7 +21,20 @@ class OrcController {
                 .join('Status', 'Status.id', '=', 'orc.statuss')
                 .select('orc.*', 'Users.username', 'Status.*');
 
-            return res.json(response2);
+
+            response2.map((value: any) => {
+                const pid = value.products_id;
+
+                return res.json(pid);
+            });
+
+            //const response4 = await Knex('orcProducts').where({});
+
+            const datas = {
+                response2
+            }
+
+            return res.json(datas);
         }
 
         const response = await Knex('orc')
@@ -46,20 +59,28 @@ class OrcController {
 
         let data = {
             user_id,
-            produtos,
             valor_total,
             statuss
         }
 
+        await Knex('orcProducts').insert({products: produtos});
+
+        const pID = await Knex('orcProducts').orderBy('created_at', 'desc').select('id');
+
+        const pcID = pID[0];
+
+        const products_id = pcID.id
+
         await Knex('orc').insert({
             user_id,
-            produtos,
+            products_id,
             valor_total,
             statuss
         })
 
 
-        return res.json(data);
+
+        return res.json('ok');
 
     }
 
