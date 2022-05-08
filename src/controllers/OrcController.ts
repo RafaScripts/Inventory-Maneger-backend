@@ -10,37 +10,24 @@ interface product {
 class OrcController {
 
     async index(req: any, res: any){
-        const {id} = req.query;
+        const {ppID} = req.query;
 
-        var orc_id = Number(id);
+        let pID = Number(ppID);
 
-        if(orc_id){
-            const response2 = await Knex('orc')
-                .where('orc.id', '=', orc_id)
-                .join('Users', 'Users.id', '=', 'orc.user_id')
-                .join('Status', 'Status.id', '=', 'orc.statuss')
-                .select('orc.*', 'Users.username', 'Status.*');
+        //detalhamento de orçamento especifico
+        if(pID){
 
+            const response4 = await Knex('orcProducts').where({id: pID}).select('products');
 
-            response2.map((value: any) => {
-                const pid = value.products_id;
-
-                return res.json(pid);
-            });
-
-            //const response4 = await Knex('orcProducts').where({});
-
-            const datas = {
-                response2
-            }
-
-            return res.json(datas);
+            return res.json(response4);
         }
 
+        //listagem geral de todos os orçamentos mas não retorna os produtos.
         const response = await Knex('orc')
             .join('Users', 'user_id', '=', 'Users.id')
             .join('Status', 'Status.id', '=', 'orc.statuss')
-            .select('orc.*', 'Users.username', 'Status.*');
+            .join('orcProducts', 'orcProducts.id', '=', 'orc.products_id')
+            .select('orc.*', 'Users.username', 'Status.status');
 
         if(!response){
             return res.json('Sem orçamentos');
