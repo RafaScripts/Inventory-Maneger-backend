@@ -2,6 +2,18 @@ import Knex from '../database/index';
 
 class ItensController{
     async index(req: any, res: any){
+        const {reference, id} = req.query;
+
+        if(reference){
+            const iten = await Knex('itens').where({reference: reference});
+            return res.json(iten);
+        }
+
+        if(id){
+            const iten = await Knex('itens').where({id: id});
+            return res.json(iten);
+        }
+
         const response = await Knex('itens');
 
         return res.json(response);

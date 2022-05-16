@@ -69,7 +69,8 @@ Routes.get('/status', StatusController.store)
     .post('/status', StatusController.create);
 
 // Relatorios
-Routes.get('/reports', ReportsController.index);
+Routes.get('/reports', ReportsController.index)
+    .post('/reports', ReportsController.create);
 
 // XML
 Routes.get('/xml', ImportXMLcontroller.index)

@@ -3,10 +3,12 @@ import pdf from 'html-pdf';
 
 
 class ReportsController {
-    async index (req: any, res: any){
-        const response = await Knex('orc').where({ status: 2 });
+    async index(req: any, res: any) {
+        return res.json({ message: 'Hello World' });
+    }
 
-        return res.json(response);
+    async create(req: any, res: any) {
+        return res.json({ message: 'Hello World' });
     }
 }
 
