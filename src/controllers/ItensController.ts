@@ -56,6 +56,7 @@ class ItensController{
 
         return res.json('OK DELETED');
     }
+
 }
 
 export default new ItensController;
