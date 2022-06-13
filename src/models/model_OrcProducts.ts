@@ -1,19 +1,13 @@
 import mongoose from 'mongoose';
 
 interface OrcProducts extends mongoose.Document {
-    id: string;
     products: any;
     created_at: Date;
     update_at: Date;
 }
 
+
 const OrcProductsSchema = new mongoose.Schema({
-    id: {
-        type: String,
-        required: true,
-        unique: true,
-        index: true
-    },
     products: {
         type: Array,
     },
