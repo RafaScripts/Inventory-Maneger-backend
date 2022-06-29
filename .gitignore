@@ -86,3 +86,13 @@ typings/
 
 # DynamoDB Local files
 .dynamodb/
+
+# .idea project directories
+.idea/
+
+# .vscode project directories
+.vscode/
+
+# package-lock.json is created by `yarn install`
+package-lock.json
+yarn.lock
