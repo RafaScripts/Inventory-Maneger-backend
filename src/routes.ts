@@ -35,7 +35,7 @@ Routes.post('/login', SessionController.store);
 // ativar na proxima atualização
 //Routes.use(AuthMiddleware);
 
-
+// GET, POST, PUT, DELETE - HTTP METHODS
 
 // Usuarios
 Routes.get('/users', UserController.index)
@@ -61,7 +61,7 @@ Routes.get('/itens', ItensController.index)
 // Orçamentos
 Routes.get('/orcamentos', OrcController.index)
     .post('/orcamentos', OrcController.create)
-    .put('/orcamentos/:id', OrcController.update)
+    .put('/orcamentos', OrcController.update)
     .delete('/orcamentos/:id', OrcController.delete);
 
 // Status ORC
