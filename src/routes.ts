@@ -17,6 +17,7 @@ import SessionController from "./controllers/SessionController";
 import ActivateController from "./controllers/ActivateController";
 import StatusController from "./controllers/StatusController";
 import AuthMiddleware from "./midlewares/auth";
+import admin_Check from "./midlewares/admin_Check";
 import TokenMiddleware from "./midlewares/token";
 
 const Routes = express();
@@ -33,15 +34,15 @@ Routes.post('/login', SessionController.store);
 
 //midleware de autenticação
 // ativar na proxima atualização
-//Routes.use(AuthMiddleware);
+Routes.use(AuthMiddleware);
 
 // GET, POST, PUT, DELETE - HTTP METHODS
 
 // Usuarios
 Routes.get('/users', UserController.index)
-    .post('/users', UserController.create)
-    .put('/users', UserController.update)
-    .delete('/users', UserController.delete);
+    .post('/users', admin_Check,UserController.create)
+    .put('/users', admin_Check,UserController.update)
+    .delete('/users', admin_Check,UserController.delete);
 
 // CFOP
 Routes.get('/cfop', importXMLcontroller.index);
