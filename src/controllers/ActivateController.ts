@@ -1,3 +1,4 @@
+/* Importing the knex instance from the database folder. */
 import Knex from '../database/index';
 
 class ActivateController {

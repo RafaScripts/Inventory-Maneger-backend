@@ -1,5 +1,7 @@
 import Knex from '../database/index';
 import {model_OrcProducts} from "../models/model_OrcProducts";
+//import colections from "../configs/firebase/firestore";
+import getCities from "../configs/firebase/firebase";
 
 interface product {
     id: number,
@@ -12,6 +14,16 @@ class OrcController {
 
     async index(req: any, res: any){
         const {ppID} = req.query;
+        let {pages} = req.query;
+
+        let page = Number(pages);
+
+        if(!page){
+            page = 1;
+        }
+
+        //colections();
+      getCities();
 
         //detalhamento de orçamento especifico
         if(ppID){
@@ -21,25 +33,25 @@ class OrcController {
             return res.json(response4);
         }
 
+        const [count] = await Knex('orc').count();
+
         //listagem geral de todos os orçamentos mas não retorna os produtos.
         const response = await Knex('orc')
             //.join('Users', 'user_id', '=', 'Users.id')
             .join('Status', 'Status.id', '=', 'orc.statuss')
+            //.limit(5)
+            //.offset((page - 1) * 5)
             .select('orc.*', 'Status.status');
 
         if(!response){
             return res.json('Sem orçamentos');
         }
 
-        const podructs = await model_OrcProducts.find();
+        //const podructs = await model_OrcProducts.find();
         //const teste = podructs[0].podructs;
 
-        const data = {
-            response,
-            podructs
-        }
 
-        return res.json(data);
+        return res.json(response);
     }
 
     async create(req: any, res: any){
@@ -85,8 +97,7 @@ class OrcController {
     }
 
     async update(req: any, res: any){
-        const {id} = req.params;
-        const {ppID} = req.query;
+        const {ppID, id} = req.query;
         const {produtos, valor_total, status} = req.body;
 
         if (!id) {
@@ -94,10 +105,11 @@ class OrcController {
         }
 
         if(produtos || ppID){
-            await model_OrcProducts.findOneAndUpdate({_id: ppID}, {products: produtos});
+            await model_OrcProducts.updateOne({_id: ppID}, {products: produtos});
             await Knex('orc').where({id: id}).update({valor_total});
+            const teste = await model_OrcProducts.findOne({_id: ppID});
 
-            return res.json(produtos);
+            return res.json(teste);
         }
 
         if(status){

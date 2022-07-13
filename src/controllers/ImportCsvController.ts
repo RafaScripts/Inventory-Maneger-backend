@@ -37,6 +37,7 @@ class importCsvController {
         const products: Product[] = [];
 
 
+        /* A for loop that is reading each line of the file and splitting it by the comma. */
         for await (let line of productLine){
             //separa cada item pelo separador ',' comum de um arquivo .CSV
             const productLineSplit = line.split(',');
