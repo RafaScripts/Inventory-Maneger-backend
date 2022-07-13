@@ -7,8 +7,8 @@ job("Build and push Docker") {
             args["HTTP_PROXY"] = "http://10.20.30.1:123"
         }
 
-        push("digitalmoon.registry.jetbrains.space/p/syspos/mydocker/") {
-            tags("version1.0")
+        push("digitalmoon.registry.jetbrains.space/p/syspos/mydocker/sysposback") {
+            tags("v1.0")
         }
     }
 }
