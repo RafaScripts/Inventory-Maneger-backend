@@ -33,7 +33,9 @@
   "scripts": {
     "dev": "nodemon src/server.ts",
     "start": "sucrase-node src/server.ts",
-    "deploy": "vercel deploy --prod"
+    "deploy": "vercel deploy --prod",
+    "build": "tsc",
+    "prod:start": "npm run build && node build/src/server.js"
   },
   "devDependencies": {
     "@types/cors": "^2.8.12",
