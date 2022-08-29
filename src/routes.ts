@@ -34,13 +34,13 @@ Routes.post('/login', SessionController.store);
 
 //midleware de autenticação
 // ativar na proxima atualização
-Routes.use(AuthMiddleware);
+//Routes.use(AuthMiddleware);
 
 // GET, POST, PUT, DELETE - HTTP METHODS
 
 // Usuarios
 Routes.get('/users', UserController.index)
-    .post('/users', admin_Check,UserController.create)
+    .post('/users', /*admin_Check*/UserController.create)
     .put('/users', admin_Check,UserController.update)
     .delete('/users', admin_Check,UserController.delete);
 
