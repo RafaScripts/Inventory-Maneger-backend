@@ -6,7 +6,7 @@ import mongoose from "mongoose";
 const knex = require("knex")(knexfile.development);
 
 
-const mongoDB_URL = "mongodb+srv://main:032211@geral.el57i.mongodb.net/sysposDev?retryWrites=true&w=majority";
+const mongoDB_URL = "mongodb+srv://sysposDev:032211@cluster0.p1zcpyw.mongodb.net/clusterV0?retryWrites=true&w=majority";
 
 export const dbConnect = () => {
 
